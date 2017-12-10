@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-ifneq (,$(filter loire tone yoshino,$(PRODUCT_PLATFORM)))
+ifneq (,$(filter kanuti,$(PRODUCT_PLATFORM)))
 ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
 include $(CLEAR_VARS)
 LOCAL_MODULE             := rdclean.sh

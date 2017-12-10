@@ -206,7 +206,7 @@ PRODUCT_PACKAGES += \
     librqbalance
 
 # PRODUCT_PLATFORM isn't set yet, thus we check the available path
-ifneq (,$(filter %loire %tone %yoshino,$(PLATFORM_COMMON_PATH)))
+ifneq (,$(filter %kanuti,$(PLATFORM_COMMON_PATH)))
 ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
 # ramdump cleaner
 PRODUCT_PACKAGES += \
@@ -354,10 +354,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.sdcardfs=true
 
+ifneq ($(filter kanuti,$(SOMC_PLATFORM)),)
 # RILD
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/odm/lib64/libril-qc-qmi-1.so \
     ril.subscription.types=NV,RUIM
+endif
 
 # Vendor version
 PRODUCT_PROPERTY_OVERRIDES += \
