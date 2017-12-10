@@ -20,14 +20,12 @@ service tad_static /odm/bin/tad_static /dev/block/bootdevice/by-name/TA 0,16
     socket tad stream 0660 system system
     seclabel u:r:tad:s0
     writepid /dev/cpuset/system-background/tasks
-    shutdown critical
 
 # SONY misc
 service ta_qmi_service /odm/bin/ta_qmi_service
     class core
     user root
     writepid /dev/cpuset/system-background/tasks
-    shutdown critical
 
 # SONY prop
 service sct_service /odm/bin/sct_service
@@ -40,7 +38,6 @@ service mlog_qmi_service /odm/bin/mlog_qmi_service
     class core
     user root
     writepid /dev/cpuset/system-background/tasks
-    shutdown critical
 
 # QCOM prop
 service rmt_storage /odm/bin/rmt_storage
@@ -48,7 +45,6 @@ service rmt_storage /odm/bin/rmt_storage
     user root
     group system wakelock
     writepid /dev/cpuset/system-background/tasks
-    shutdown critical
 
 # QCOM prop
 service qmuxd /odm/bin/qmuxd
@@ -75,15 +71,14 @@ service irsc_util /odm/bin/irsc_util "/etc/sec_config"
 service per_mgr /odm/bin/pm-service
     class core
     user system
-    group system
+    group system net_raw
     writepid /dev/cpuset/system-background/tasks
-    shutdown critical
 
 # QCOM prop
 service per_proxy /odm/bin/pm-proxy
     class core
     user system
-    group system
+    group system net_raw
     disabled
     writepid /dev/cpuset/system-background/tasks
 
@@ -107,7 +102,6 @@ service qseecomd /odm/bin/qseecomd
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
-    shutdown critical
 
 # QCOM ADSP FastRPC
 service adsprpcd /odm/bin/adsprpcd
@@ -119,14 +113,14 @@ service adsprpcd /odm/bin/adsprpcd
 service thermanager /system/vendor/bin/thermanager /system/etc/thermanager.xml
     class main
     user root
-    group root system
+    group root
     writepid /dev/cpuset/system-background/tasks
 
 # Offline charger
-service charger /charger
+service charger /sbin/healthd -c
     class charger
     critical
-    seclabel u:r:charger:s0
+    seclabel u:r:healthd:s0
     writepid /dev/cpuset/system-background/tasks
 
 # OSS time
@@ -138,12 +132,14 @@ service timekeep /system/vendor/bin/timekeep restore
     writepid /dev/cpuset/system-background/tasks
 
 # DSDS second ril
-service ril-daemon2 /system/vendor/bin/hw/rild -c 2
+service ril-daemon2 /system/bin/rild -c 2
     class main
-    user radio
+    socket rild2 stream 660 root radio
+    socket sap_uim_socket2 stream 660 bluetooth bluetooth
+    socket rild-debug2 stream 660 radio system
+    user root
     disabled
-    group radio cache inet misc audio log readproc wakelock
-    capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+    group radio cache inet misc audio log
 
 on property:ro.boot.baseband=apq
     setprop ro.radio.noril yes
