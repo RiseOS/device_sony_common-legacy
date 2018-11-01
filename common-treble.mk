@@ -73,11 +73,6 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
-# Fingerprint
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1 \
-    android.hardware.biometrics.fingerprint@2.1-service.sony
-
 ifneq ($(TARGET_LEGACY_KEYMASTER),true)
 # Keymaster
 PRODUCT_PACKAGES += \
