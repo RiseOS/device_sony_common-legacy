@@ -15,7 +15,7 @@
 -include device/sony/customization/Customization.mk
 
 # Common path
-COMMON_PATH := device/sony/common
+COMMON_PATH := device/sony/common-legacy
 
 # Do not build proprietary capability
 TARGET_USES_AOSP := true

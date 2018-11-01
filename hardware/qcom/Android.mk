@@ -24,7 +24,7 @@ SRC_DISPLAY_HAL_DIR := $(display-hal)
 SRC_MEDIA_HAL_DIR := $(QCOM_MEDIA_ROOT)
 TARGET_KERNEL_VERSION := $(SOMC_KERNEL_VERSION)
 
-include device/sony/common/hardware/qcom/utils.mk
+include device/sony/common-legacy/hardware/qcom/utils.mk
 
 include $(display-hal)/Android.mk
 include $(call all-makefiles-under,$(audio-hal))

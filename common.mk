@@ -27,7 +27,7 @@ TARGET_VENDOR_VERSION := v2
 PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/oss/release-keys/testkey
 
 # Common path
-COMMON_PATH := device/sony/common
+COMMON_PATH := device/sony/common-legacy
 
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_PATH)/overlay
 
@@ -103,9 +103,9 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_CUSTOM_IMAGE_MAKEFILES := $(COMMON_PATH)/odm.mk
 
-$(call inherit-product, device/sony/common/common-init.mk)
-$(call inherit-product, device/sony/common/common-odm.mk)
-$(call inherit-product, device/sony/common/common-packages.mk)
-$(call inherit-product, device/sony/common/common-perm.mk)
-$(call inherit-product, device/sony/common/common-prop.mk)
-$(call inherit-product, device/sony/common/common-treble.mk)
+$(call inherit-product, device/sony/common-legacy/common-init.mk)
+$(call inherit-product, device/sony/common-legacy/common-odm.mk)
+$(call inherit-product, device/sony/common-legacy/common-packages.mk)
+$(call inherit-product, device/sony/common-legacy/common-perm.mk)
+$(call inherit-product, device/sony/common-legacy/common-prop.mk)
+$(call inherit-product, device/sony/common-legacy/common-treble.mk)
