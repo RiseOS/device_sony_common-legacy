@@ -268,3 +268,13 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/etc/init
 include $(BUILD_PREBUILT)
 endif
+
+ifneq ($(filter msm8916,$(TARGET_BOARD_PLATFORM)),)
+include $(CLEAR_VARS)
+LOCAL_MODULE := wcnss_service.rc
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES := vendor/etc/init/wcnss_service.rc
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR)/etc/init
+include $(BUILD_PREBUILT)
+endif
