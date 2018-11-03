@@ -113,6 +113,10 @@ on post-fs-data
     # Create directory used by bluetooth subsystem
     mkdir /data/vendor/bluetooth 2770 bluetooth bluetooth
 
+    # BT MAC address hack
+    write /data/vendor/bluetooth/bluetooth_bdaddr 00:02:00:00:00:00
+    chown bluetooth bluetooth /data/vendor/bluetooth/bluetooth_bdaddr
+
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
