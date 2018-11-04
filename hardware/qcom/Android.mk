@@ -12,7 +12,7 @@ audio-hal := hardware/qcom/audio
 bt-hal := hardware/qcom/bt/msm8998
 gps-hal := hardware/qcom/gps/sdm845
 display-hal := hardware/qcom/display/msm8994
-QCOM_MEDIA_ROOT := hardware/qcom/media/sdm845
+QCOM_MEDIA_ROOT := hardware/qcom/media/msm8974
 OMX_VIDEO_PATH := mm-video-v4l2
 media-hal := $(QCOM_MEDIA_ROOT)
 
